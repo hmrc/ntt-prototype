@@ -29,6 +29,9 @@
 {% from "govuk/components/textarea/macro.njk"         import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
 
+{# Custom macros #}
+{% from "macros/task-list/macro.njk"                  import taskList %}
+
 {% block head %}
     {% include "includes/head.html" %}
 {% endblock %}

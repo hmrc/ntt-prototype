@@ -1,0 +1,58 @@
+[
+    {
+        "name": "tasks",
+        "type": "array",
+        "required": true,
+        "description": "Array of task item objects.",
+        "params": [
+            {
+                "name": "task.text",
+                "type": "string",
+                "required": true,
+                "description": "Name for each task."
+            },
+            {
+                "name": "task.id",
+                "type": "string",
+                "required": false,
+                "description": "An id to identify each task."
+            },
+            {
+                "name": "task.directory",
+                "type": "string",
+                "required": false,
+                "description": "The directory the task’s section is contained within."
+            },
+            {
+                "name": "task.startPage",
+                "type": "string",
+                "required": true,
+                "description": "."
+            },
+            {
+                "name": "task.started",
+                "type": "string",
+                "required": true,
+                "description": "The data object that it stored when the first question in the sectoin is answered."
+            },
+            {
+                "name": "task.finished",
+                "type": "string",
+                "required": true,
+                "description": "The data object that it stored when the section is confirmed as complete."
+            },
+            {
+                "name": "task.listPage",
+                "type": "string",
+                "required": false,
+                "description": "For sections with add to list page. This overrides the default Check answers page value."
+            }
+        ]
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the surrounding `ul`"
+    }
+]

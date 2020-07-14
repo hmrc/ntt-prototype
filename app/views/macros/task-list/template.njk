@@ -1,0 +1,24 @@
+<div class="app-task-list">
+    <ul class="app-task-list__items{%- if params.classes %} {{ params.classes }}{% endif %}">
+        {% for task in params.tasks %}
+            {% if task %}
+                <li class="app-task-list__item">
+                    <span class="app-task-list__task-name">
+                        <a href="/ntt{{ "/" + task.directory | lower | replace(" ", "-") }}/{% if task.finished %}{{ "check-answers" if not task.listPage }}{% else %}{{ task.startPage }}{% endif %}" aria-describedby="{{ task.directory if not task.id | lower | replace(" ", "-") }}-status">
+                            {{ task.task }}
+                        </a>
+                    </span>
+                    <span class="hmrc-status-tag" id="{{ task.directory if not task.id | lower | replace(" ", "-") }}-status">
+                        {%- if task.finished -%}
+                            Completed
+                        {%- elif task.started -%}
+                            In progress
+                        {%- else -%}
+                            Not started
+                        {%- endif -%}
+                    </span>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
