@@ -7,74 +7,72 @@
 {% endblock %}
 
 {% block content %}
-
     <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">
-            {{ pageTitle }}
-        </h1>
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">
+                {{ pageTitle }}
+            </h1>
 
-        <h2 class="govuk-heading-m">Quick links</h2>
-        <ul class="govuk-list govuk-list--bullet">
-            <li><a href="#task-list">Task list</a></li>
-            <li><a href="#trust-details">Trust details</a></li>
-            <li><a href="#trustees">Trustees</a></li>
-        </ul>
+            <h2 class="govuk-heading-m">Quick links</h2>
+            <ul class="govuk-list govuk-list--bullet">
+                <li><a href="#task-list">Task list</a></li>
+                <li><a href="#trust-details">Trust details</a></li>
+                <li><a href="#trustees">Trustees</a></li>
+            </ul>
 
-        {%- macro page(pageLink, pageTitle, sectionURL) %}
-            <li>
-                <a href="/ntt/{{- pageLink -}}">
-                    {{- pageTitle -}}
-                </a>
-            </li>
-        {% endmacro -%}
+            {%- macro page(pageLink, pageTitle, sectionURL) %}
+                <li>
+                    <a href="/ntt/{{- pageLink -}}">
+                        {{- pageTitle -}}
+                    </a>
+                </li>
+            {% endmacro -%}
 
-        <h2 id="task-list" class="govuk-heading-m">Task list</h2>
-        <p><a href="/task-list">Task list</a></p>
+            <h2 id="task-list" class="govuk-heading-m">Task list</h2>
+            <p><a href="/task-list">Task list</a></p>
 
-        <h2 id="trust-details" class="govuk-heading-m">Trust details</h2>
-        <ul class="govuk-list govuk-list--bullet">
-            {% set sectionURL = "/trust-details/" %}
-            {{ page(sectionURL + "trust-name", "What is the name of the trust?") }}
-            {{ page(sectionURL + "date-trust-created", "When was the trust created?"  ) }}
-            {{ page(sectionURL + "all-trustees-in-uk", "Are all of the trustees based in the UK?") }}
-            {{ page(sectionURL + "all-trustees-outside-uk", "Are all of the trustees based outside of the UK?") }}
-            {{ page(sectionURL + "settlors-in-uk", "Are any of the settlors based in the UK?") }}
-            {{ page(sectionURL + "residency-confirmation", "Residency of the trust") }}
-            {{ page(sectionURL + "express-trust", "Is the trust an express trust?") }}
-            {{ page(sectionURL + "check-answers", "Check your answers") }}
-        </ul>
+            <h2 id="trust-details" class="govuk-heading-m">Trust details</h2>
+            <ul class="govuk-list govuk-list--bullet">
+                {% set sectionURL = "/trust-details/" %}
+                {{ page(sectionURL + "trust-name", "What is the name of the trust?") }}
+                {{ page(sectionURL + "date-trust-created", "When was the trust created?"  ) }}
+                {{ page(sectionURL + "all-trustees-in-uk", "Are all of the trustees based in the UK?") }}
+                {{ page(sectionURL + "all-trustees-outside-uk", "Are all of the trustees based outside of the UK?") }}
+                {{ page(sectionURL + "settlors-in-uk", "Are any of the settlors based in the UK?") }}
+                {{ page(sectionURL + "residency-confirmation", "Residency of the trust") }}
+                {{ page(sectionURL + "express-trust", "Is the trust an express trust?") }}
+                {{ page(sectionURL + "check-answers", "Check your answers") }}
+            </ul>
 
-        <h2 id="trustees" class="govuk-heading-m">Trustees</h2>
-        <ul class="govuk-list govuk-list--bullet">
-            {% set sectionURL = "/trustees/" %}
-            {{ page(sectionURL + "lead-trustee", "Is this the lead trustee?") }}
-            {{ page(sectionURL + "individual-or-business", "Is this trustee an individual or a business?") }}
-            {{ page(sectionURL + "trustee-name", "What is this trustee’s name?") }}
-            {{ page(sectionURL + "date-of-birth-known", "Do you know this trustee’s date of birth?") }}
-            {{ page(sectionURL + "date-of-birth", "What is this trustee’s date of birth?") }}
-            {{ page(sectionURL + "has-national-insurance-number", "Does this trustee have a national insurance number?") }}
-            {{ page(sectionURL + "national-insurance-number", "What is this trustee’s national insurance number?") }}
-            {{ page(sectionURL + "passport-country", "What is this trustee’s passport or ID card country of issue?") }}
-            {{ page(sectionURL + "passport-number", "What is this trustee’s passport or ID card number?") }}
-            {{ page(sectionURL + "passport-expiry", "What is this trustee’s passport or ID card expiry date?") }}
-            {{ page(sectionURL + "address-in-uk", "Is this trustee’s address in the UK?") }}
-            {{ page(sectionURL + "address-uk", "What is this trustee’s address? (UK)") }}
-            {{ page(sectionURL + "address-non-uk", "What is this trustee’s address? (Non-UK)") }}
-            {{ page(sectionURL + "country-of-nationality-known", "Do you know this trustee’s nationality?") }}
-            {{ page(sectionURL + "nationality-uk", "Is this trustee’s country of nationality the UK?") }}
-            {{ page(sectionURL + "country-of-nationality", "What is this trustee’s country of nationality?") }}
-            {{ page(sectionURL + "country-of-residence-known", "What is this trustee’s country of residence?") }}
-            {{ page(sectionURL + "residence-uk", "Is this trustee resident in the UK?") }}
-            {{ page(sectionURL + "country-of-residence", "What is this trustee’s country of residence?") }}
-            {{ page(sectionURL + "legally-incapable-known", "Do you know this trustee’s is legally incapable?") }}
-            {{ page(sectionURL + "legally-incapable", "Is this trustee legally incapable?") }}
-            {{ page(sectionURL + "email", "What is this trustee’s email address?") }}
-            {{ page(sectionURL + "telephone", "What is this trustee’s telephone number?") }}
-            {{ page(sectionURL + "check-answers", "Check your answers") }}
-        </ul>
+            <h2 id="trustees" class="govuk-heading-m">Trustees</h2>
+            <ul class="govuk-list govuk-list--bullet">
+                {% set sectionURL = "/trustees/" %}
+                {{ page(sectionURL + "lead-trustee", "Is this the lead trustee?") }}
+                {{ page(sectionURL + "individual-or-business", "Is this trustee an individual or a business?") }}
+                {{ page(sectionURL + "trustee-name", "What is this trustee’s name?") }}
+                {{ page(sectionURL + "date-of-birth-known", "Do you know this trustee’s date of birth?") }}
+                {{ page(sectionURL + "date-of-birth", "What is this trustee’s date of birth?") }}
+                {{ page(sectionURL + "has-national-insurance-number", "Does this trustee have a national insurance number?") }}
+                {{ page(sectionURL + "national-insurance-number", "What is this trustee’s national insurance number?") }}
+                {{ page(sectionURL + "passport-country", "What is this trustee’s passport or ID card country of issue?") }}
+                {{ page(sectionURL + "passport-number", "What is this trustee’s passport or ID card number?") }}
+                {{ page(sectionURL + "passport-expiry", "What is this trustee’s passport or ID card expiry date?") }}
+                {{ page(sectionURL + "address-in-uk", "Is this trustee’s address in the UK?") }}
+                {{ page(sectionURL + "address-uk", "What is this trustee’s address? (UK)") }}
+                {{ page(sectionURL + "address-non-uk", "What is this trustee’s address? (Non-UK)") }}
+                {{ page(sectionURL + "country-of-nationality-known", "Do you know this trustee’s nationality?") }}
+                {{ page(sectionURL + "nationality-uk", "Is this trustee’s country of nationality the UK?") }}
+                {{ page(sectionURL + "country-of-nationality", "What is this trustee’s country of nationality?") }}
+                {{ page(sectionURL + "country-of-residence-known", "What is this trustee’s country of residence?") }}
+                {{ page(sectionURL + "residence-uk", "Is this trustee resident in the UK?") }}
+                {{ page(sectionURL + "country-of-residence", "What is this trustee’s country of residence?") }}
+                {{ page(sectionURL + "legally-incapable-known", "Do you know this trustee’s is legally incapable?") }}
+                {{ page(sectionURL + "legally-incapable", "Is this trustee legally incapable?") }}
+                {{ page(sectionURL + "email", "What is this trustee’s email address?") }}
+                {{ page(sectionURL + "telephone", "What is this trustee’s telephone number?") }}
+                {{ page(sectionURL + "check-answers", "Check your answers") }}
+            </ul>
 
+        </div>
     </div>
-</div>
-
 {% endblock %}
