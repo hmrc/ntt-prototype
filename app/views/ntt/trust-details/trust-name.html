@@ -1,17 +1,9 @@
-{% set progress = "" %}
 {% set title = "What is the name of the trust?" %}
-{% set hint = "Enter 53 characters or less." %}
-{% set hidetext2 = "true" %}
-{% set hidetext = "true" %}
 {% set sectionName = "Trust details" %}
 {% set next = "date-trust-created" %}
-
-{% extends "includes/_PAGE.html" %}
-
 {% set buttonname = "Save and continue" %}
 
-{% set link = "../task-list" %}
-{% set linkname = "Return to registration progress"   %}
+{% extends "includes/_page.html" %}
 
 {% block form %}
     <form action="{{ next }}" method="POST" >

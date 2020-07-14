@@ -1,27 +1,19 @@
-{% if data["trustees-uk"] and data["trustees-uk"] == "yes" %}
+{%- if data["trustees-uk"] and data["trustees-uk"] == "yes" %}
     {% set UKTrust = true %}
-{% elif
+{%- elif
     (data["trustees-non-uk"] and data["trustees-non-uk"] == "no")
     and
     (data["settlors-uk"] and data["settlors-uk"] == "yes")
 %}
     {% set UKTrust = true %}
-{% endif %}
+{% endif -%}
 
-{% set progress = "" %}
 {% set title = "Residency of the trust" %}
-{% set hidetext2 = "true" %}
-{% set hidetext = "true" %}
 {% set sectionName = "Trust details" %}
 {% set next = "express-trust" %}
-{% set noForm = true %}
-
-{% extends "includes/_PAGE.html" %}
-
 {% set buttonname = "Continue" %}
 
-{% set link = "../task-list" %}
-{% set linkname = "Return to registration progress"   %}
+{% extends "includes/_PAGE.html" %}
 
 {% block content %}
     <div class="govuk-grid-row">
