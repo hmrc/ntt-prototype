@@ -1,0 +1,43 @@
+{% set progress = "" %}
+{% set title = "Are all of the trustees based in the UK?" %}
+{% set hidetext2 = "true" %}
+{% set hidetext = "true" %}
+{% set hint = "" %}
+{% set sectionName = "Trust details" %}
+{% set next = "trustees-uk-answer" %}
+
+{% set link = "../task-list" %}
+{% set linkname = "Return to registration progress"   %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% set buttonname = "Save and continue" %}
+
+{% block form %}
+    <h1 class="govuk-fieldset__legend--xl govuk-!-margin-top-0">{{ title }}</h1>
+    <p>The trustee is the person who manages the trust.</p>
+    <form action="{{ next }}" method="POST" >
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: "trustees-uk",
+            name: "trustees-uk",
+            fieldset: {
+                legend: {
+                    text: title,
+                    classes: "govuk-visually-hidden"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+        <input class="govuk-button" type="submit" value="{{ buttonname }}" name="{{ button }}">
+    </form>
+{% endblock %}

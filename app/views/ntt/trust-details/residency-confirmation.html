@@ -1,0 +1,35 @@
+{% if data["trustees-uk"] and data["trustees-uk"] == "yes" %}
+    {% set UKTrust = true %}
+{% elif
+    (data["trustees-non-uk"] and data["trustees-non-uk"] == "no")
+    and
+    (data["settlors-uk"] and data["settlors-uk"] == "yes")
+%}
+    {% set UKTrust = true %}
+{% endif %}
+
+{% set progress = "" %}
+{% set title = "Residency of the trust" %}
+{% set hidetext2 = "true" %}
+{% set hidetext = "true" %}
+{% set sectionName = "Trust details" %}
+{% set next = "express-trust" %}
+{% set noForm = true %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% set buttonname = "Continue" %}
+
+{% set link = "../task-list" %}
+{% set linkname = "Return to registration progress"   %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+            <p class="govuk-caption-xl">{{ sectionName }}</p>
+            <h1 class="govuk-heading-xl">{{ title }}</h1>
+            <p>Based on your answers, the trust is {{ 'not' if not UKTrust }} resident in the UK.</p>
+            <p><a class="govuk-button" href="{{ next }}">{{ buttonname }}</a></p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% set progress = "" %}
+{% set title = "What is the name of the trust?" %}
+{% set hint = "Enter 53 characters or less." %}
+{% set hidetext2 = "true" %}
+{% set hidetext = "true" %}
+{% set sectionName = "Trust details" %}
+{% set next = "date-trust-created" %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% set buttonname = "Save and continue" %}
+
+{% set link = "../task-list" %}
+{% set linkname = "Return to registration progress"   %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {{ govukInput({
+            label: {
+                text: title,
+                classes: "govuk-label--xl",
+                isPageHeading: true
+            },
+            hint: {
+                text: "Enter 53 characters or fewer."
+            },
+            id: "trust-name",
+            name: "trust-name"
+        }) }}
+        <input class="govuk-button" type="submit" value="{{ buttonname }}" name="{{ button }}">
+    </form>
+{% endblock %}

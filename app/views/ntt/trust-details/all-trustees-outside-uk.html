@@ -1,0 +1,42 @@
+{% set progress = "" %}
+{% set title = "Are all of the trustees based outside of the UK?" %}
+{% set hidetext2 = "true" %}
+{% set hidetext = "true" %}
+{% set hint = "" %}
+{% set sectionName = "Trust details" %}
+{% set next = "trustees-non-uk-answer" %}
+
+{% set link = "../task-list" %}
+{% set linkname = "Return to registration progress"   %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% set buttonname = "Save and continue" %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: "trustees-non-uk",
+            name: "trustees-non-uk",
+            fieldset: {
+                legend: {
+                    text: title,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--xl"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+        <input class="govuk-button" type="submit" value="{{ buttonname }}" name="{{ button }}">
+    </form>
+{% endblock %}
