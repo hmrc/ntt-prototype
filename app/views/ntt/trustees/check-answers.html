@@ -1,0 +1,47 @@
+{% set title = "Check your answers" %}
+{% set sectionName = "Trustees" %}
+{% set next = "../task-list" %}
+{% set buttonname = "Confirm and continue" %}
+{% set hideback = true %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+            <p class="govuk-caption-xl">{{ sectionName }}</p>
+            <h1 class="govuk-heading-xl">{{ title }}</h1>
+            {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: [
+                    {
+                        key: {
+                            text: "What is this trustee’s name?"
+                        },
+                        value: {
+                            text: data["trustees--trustee-name"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "trustee-name",
+                                    text: "Change",
+                                    visuallyHiddenText: "What is this trustee’s name?"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }) }}
+            <form action="{{ next }}" method="POST" >
+                {{ govukButton({
+                    text: buttonname,
+                    name: "trustees-confimed",
+                    value: "yes"
+                }) }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

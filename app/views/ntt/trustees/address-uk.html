@@ -1,0 +1,67 @@
+{% set title = "What is this trustee’s address?" %}
+{% set sectionName = "Trustees" %}
+{% set next = "nationality-uk" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {% call govukFieldset({
+            legend: {
+                text: title,
+                classes: "govuk-fieldset__legend--xl",
+                isPageHeading: true
+            }
+        }) %}
+            {%- set dataItem = "trustees--address-line-1" -%}
+            {{ govukInput({
+                label: {
+                    text: 'Address line 1'
+                },
+                id: dataItem,
+                name: dataItem,
+                autocomplete: "address-line1"
+            }) }}
+            {%- set dataItem = "trustees--address-line-2" -%}
+            {{ govukInput({
+                label: {
+                    text: 'Address line 2'
+                },
+                id: dataItem,
+                name: dataItem,
+                autocomplete: "address-line2"
+            }) }}
+            {%- set dataItem = "trustees--address-line-3" -%}
+            {{ govukInput({
+                label: {
+                    text: 'Address line 3'
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: dataItem,
+                name: dataItem,
+                autocomplete: "address-level2"
+            }) }}
+            {%- set dataItem = "trustees--address-line-4" -%}
+            {{ govukInput({
+                label: {
+                    text: 'Address line 4'
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: dataItem,
+                name: dataItem
+            }) }}
+            {%- set dataItem = "trustees--postcode" -%}
+            {{ govukInput({
+                label: {
+                    text: "Postcode"
+                },
+                classes: "govuk-input--width-10",
+                id: dataItem,
+                name: dataItem,
+                autocomplete: "postal-code"
+            }) }}
+        {% endcall %}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}

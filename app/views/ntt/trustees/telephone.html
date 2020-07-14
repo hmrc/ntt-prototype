@@ -1,0 +1,25 @@
+{% set title = "What is this trustee’s telephone number?" %}
+{% set sectionName = "Trust details" %}
+{% set next = "telephone" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_page.html" %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trustees--telephone" -%}
+        {{ govukInput({
+            label: {
+                text: title,
+                classes: "govuk-label--xl",
+                isPageHeading: true
+            },
+            hint: {
+                text: "Enter 53 characters or fewer."
+            },
+            id: dataItem,
+            name: dataItem
+        }) }}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}
