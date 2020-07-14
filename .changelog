@@ -1,0 +1,31 @@
+
+# Changelog
+
+All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html). Each change can include things under the following categories:
+
+- Adds
+- Changes
+- Removes
+- Fixes
+
+----------
+
+## [Unreleased]
+
+### Adds
+- Gets routes working in trust details section
+- New page include for question pages
+- Uses macro for links on listings page
+- Adds changelog
+- Adds editorconfig file for code consistency
+- Outputs data stored in forms to the terminal
+- Adds VSCode specific config for html/nunjucks files
+- Sets up main home/index page
+- Adds page index/listings page
+- Adds trust details section, as it was in the [old prototype](https://github.com/hmrc/fivemld-prototype)
+- Installs prototype kit v9.8.0
+
+### Fixes
+- Uses consistent heading size for trust details CYA
+
+----------
