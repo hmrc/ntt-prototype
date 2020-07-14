@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% set pageTitle = "Non taxable trusts – page index" %}
+
+{% block pageTitle %}
+  {{ pageTitle }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            {{ pageTitle }}
+        </h1>
+
+        <h2 class="govuk-heading-m">Quick links</h2>
+        <ul class="govuk-list govuk-list--bullet">
+            <li><a href="#trust-details">Trust details</a></li>
+        </ul>
+
+        {%- macro page(pageLink, pageTitle) %}
+            <li>
+                <a href="/ntt/{{- pageLink -}}">
+                    {{- pageTitle -}}
+                </a>
+            </li>
+        {% endmacro -%}
+
+        <h2 id="trust-details" class="govuk-heading-m">Trust details</h2>
+        <ul class="govuk-list govuk-list--bullet">
+            {{ page( "/trust-details/trust-name", "What is the name of the trust?") }}
+            {{ page("/trust-details/date-trust-created", "When was the trust created?"  ) }}
+            {{ page("/trust-details/all-trustees-in-uk", "Are all of the trustees based in the UK?") }}
+            {{ page("/trust-details/all-trustees-outside-uk", "Are all of the trustees based outside of the UK?") }}
+            {{ page("/trust-details/settlors-in-uk", "Are any of the settlors based in the UK?") }}
+            {{ page("/trust-details/residency-confirmation", "Residency of the trust") }}
+            {{ page("/trust-details/express-trust", "Is the trust an express trust?") }}
+            {{ page("/trust-details/check-answers", "Check your answers") }}
+        </ul>
+
+    </div>
+</div>
+
+{% endblock %}

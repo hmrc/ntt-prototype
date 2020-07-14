@@ -1,0 +1,35 @@
+{% set title = "Are any of the settlors based in the UK?" %}
+{% set sectionName = "Trust details" %}
+{% set next = "residency-confirmation" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block form %}
+    <h1 class="govuk-fieldset__legend--xl govuk-!-margin-top-0">{{ title }}</h1>
+    <p>The settlor is the person who puts assets into a trust.</p>
+    <form action="{{ next }}" method="POST" >
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: "settlors-uk",
+            name: "settlors-uk",
+            fieldset: {
+                legend: {
+                    text: title,
+                    classes: "govuk-visually-hidden"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+        <input class="govuk-button" type="submit" value="{{ buttonname }}" name="{{ button }}">
+    </form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    {{ title }} {{ " – " + sectionName if sectionName }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{# hiding service name as it shouldn't be here #}
+{% block service_name %}
+    {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            {% if sectionName %}<p class="govuk-caption-xl">{{ sectionName }}</p>{% endif %}
+            {% block form %}{% endblock %}
+            {% if not hidelink %}
+                <p class="govuk-body govuk-!-margin-bottom-7">
+                    <a href="{{ "../task-list" if not returnLink }}" class="govuk-link govuk-link--no-visited-state">
+                        {{ "Return to task list" if not returnLinkText }}
+                    </a>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+{% block footer_top %}{% endblock %}

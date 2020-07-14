@@ -1,0 +1,24 @@
+{% set title = "What is the name of the trust?" %}
+{% set sectionName = "Trust details" %}
+{% set next = "date-trust-created" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_page.html" %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {{ govukInput({
+            label: {
+                text: title,
+                classes: "govuk-label--xl",
+                isPageHeading: true
+            },
+            hint: {
+                text: "Enter 53 characters or fewer."
+            },
+            id: "trust-name",
+            name: "trust-name"
+        }) }}
+        <input class="govuk-button" type="submit" value="{{ buttonname }}" name="{{ button }}">
+    </form>
+{% endblock %}
