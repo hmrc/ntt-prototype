@@ -19,6 +19,6 @@
             id: "trust-name",
             name: "trust-name"
         }) }}
-        <input class="govuk-button" type="submit" value="{{ buttonname }}" name="{{ button }}">
+        {{ govukButton({ text: buttonname }) }}
     </form>
 {% endblock %}

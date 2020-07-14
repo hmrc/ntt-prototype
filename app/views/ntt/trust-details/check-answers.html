@@ -123,7 +123,11 @@
                 ]
             }) }}
             <form action="{{ next }}" method="POST" >
-                <input class="govuk-button" type="submit" value="{{buttonname}}" name="trust-details-confimed">
+                {{ govukButton({
+                    text: buttonname,
+                    name: "trust-details-confimed",
+                    value: "yes"
+                }) }}
             </form>
         </div>
     </div>

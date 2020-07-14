@@ -30,6 +30,6 @@
                 }
             ]
         }) }}
-        <input class="govuk-button" type="submit" value="{{ buttonname }}" name="{{ button }}">
+        {{ govukButton({ text: buttonname }) }}
     </form>
 {% endblock %}

@@ -21,7 +21,10 @@
             <p class="govuk-caption-xl">{{ sectionName }}</p>
             <h1 class="govuk-heading-xl">{{ title }}</h1>
             <p>Based on your answers, the trust is {{ 'not' if not UKTrust }} resident in the UK.</p>
-            <p><a class="govuk-button" href="{{ next }}">{{ buttonname }}</a></p>
+            {{ govukButton({
+                text: buttonname,
+                href: next
+            }) }}
         </div>
     </div>
 {% endblock %}
