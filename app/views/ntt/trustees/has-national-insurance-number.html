@@ -1,13 +1,13 @@
 {% set title = "Does this trustee have a national insurance number?" %}
 {% set sectionName = "Trustees" %}
-{% set next = "national-insurance-number" %}
+{% set next = "has-national-insurance-number--redirect" %}
 {% set buttonname = "Save and continue" %}
 
 {% extends "includes/_PAGE.html" %}
 
 {% block form %}
     <form action="{{ next }}" method="POST" >
-        {%- set dataItem = "trustees--national-insurance-number-known" -%}
+        {%- set dataItem = "trustees--has-nino" -%}
         {{ govukRadios({
             classes: "govuk-radios--inline",
             idPrefix: dataItem,

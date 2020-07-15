@@ -5,5 +5,6 @@ const router = express.Router()
 
 // Page routes
 require('./views/ntt/trust-details/_routes.js')(router);
+require('./views/ntt/trustees/_routes.js')(router);
 
 module.exports = router
