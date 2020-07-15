@@ -9,9 +9,10 @@
     <h1 class="govuk-fieldset__legend--xl govuk-!-margin-top-0">{{ title }}</h1>
     <p>This is the date the trust deed was signed. For will trusts, use the date the settlor died.</p>
     <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trust-details--created" -%}
         {{ govukDateInput({
-            id: "trust-created",
-            namePrefix: "trust-created",
+            id: dataItem,
+            namePrefix: dataItem,
             fieldset: {
                 legend: {
                     text: title,

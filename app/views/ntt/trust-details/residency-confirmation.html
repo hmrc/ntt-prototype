@@ -1,9 +1,9 @@
-{%- if data["trustees-uk"] and data["trustees-uk"] == "yes" %}
+{%- if data["trust-details--trustees-all-uk"] and data["trust-details--trustees-all-uk"] == "yes" %}
     {% set UKTrust = true %}
 {%- elif
-    (data["trustees-non-uk"] and data["trustees-non-uk"] == "no")
+    (data["trust-details--trustees-all-uk"] and data["trust-details--trustees-all-uk"] == "no")
     and
-    (data["settlors-uk"] and data["settlors-uk"] == "yes")
+    (data["trust-details--settlors-any-uk"] and data["trust-details--settlors-any-uk"] == "yes")
 %}
     {% set UKTrust = true %}
 {% endif -%}

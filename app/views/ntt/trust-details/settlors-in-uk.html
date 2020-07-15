@@ -9,10 +9,11 @@
     <h1 class="govuk-fieldset__legend--xl govuk-!-margin-top-0">{{ title }}</h1>
     <p>The settlor is the person who puts assets into a trust.</p>
     <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trust-details--settlors-any-uk" -%}
         {{ govukRadios({
             classes: "govuk-radios--inline",
-            idPrefix: "settlors-uk",
-            name: "settlors-uk",
+            idPrefix: dataItem,
+            name: dataItem,
             fieldset: {
                 legend: {
                     text: title,

@@ -7,6 +7,7 @@
 
 {% block form %}
     <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trust-details--name" -%}
         {{ govukInput({
             label: {
                 text: title,
@@ -16,8 +17,8 @@
             hint: {
                 text: "Enter 53 characters or fewer."
             },
-            id: "trust-name",
-            name: "trust-name"
+            id: dataItem,
+            name: dataItem
         }) }}
         {{ govukButton({ text: buttonname }) }}
     </form>

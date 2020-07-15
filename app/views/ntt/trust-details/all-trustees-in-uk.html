@@ -9,10 +9,11 @@
     <h1 class="govuk-fieldset__legend--xl govuk-!-margin-top-0">{{ title }}</h1>
     <p>The trustee is the person who manages the trust.</p>
     <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trust-details--trustees-all-uk" -%}
         {{ govukRadios({
             classes: "govuk-radios--inline",
-            idPrefix: "trustees-uk",
-            name: "trustees-uk",
+            idPrefix: dataItem,
+            name: dataItem,
             fieldset: {
                 legend: {
                     text: title,

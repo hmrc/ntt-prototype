@@ -9,10 +9,11 @@
     <h1 class="govuk-fieldset__legend--xl govuk-!-margin-top-0">{{ title }}</h1>
     <p>An express trust is a trust that has been deliberately created by the settlor. For example, if the trust was set up by a court, it is not an express trust.</p>
     <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trust-details--express" -%}
         {{ govukRadios({
             classes: "govuk-radios--inline",
-            idPrefix: "express-trust",
-            name: "express-trust",
+            idPrefix: dataItem,
+            name: dataItem,
             fieldset: {
                 legend: {
                     text: title,
