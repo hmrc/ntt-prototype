@@ -1,4 +1,4 @@
-{% set title = "Is this trustee legally incapable?" %}
+{% set title = "Is " + (data['trustees--trustee-name'] if data['trustees--trustee-name'] else "this trustee") + " legally incapable?" %}
 {% set sectionName = "Trustees" %}
 {% set next = "email" %}
 {% set buttonname = "Save and continue" %}

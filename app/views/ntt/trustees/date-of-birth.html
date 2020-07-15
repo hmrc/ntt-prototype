@@ -1,4 +1,4 @@
-{% set title = "What is this trustee’s date of birth?" %}
+{% set title = "What is " + (data['trustees--trustee-name'] if data['trustees--trustee-name'] else "this trustee") + "’s date of birth?" %}
 {% set sectionName = "Trustees" %}
 {% set next = "date-of-birth--redirect" %}
 {% set buttonname = "Save and continue" %}

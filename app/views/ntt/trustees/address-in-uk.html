@@ -1,4 +1,4 @@
-{% set title = "Is this trustee’s address in the UK?" %}
+{% set title = "Is " + (data['trustees--trustee-name'] if data['trustees--trustee-name'] else "this trustee") + "’s address in the UK?" %}
 {% set sectionName = "Trustees" %}
 {% set next = "address-in-uk--redirect" %}
 {% set buttonname = "Save and continue" %}

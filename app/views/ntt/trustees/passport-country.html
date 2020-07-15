@@ -1,4 +1,4 @@
-{% set title = "What is this trustee’s passport or ID card’s country of issue?" %}
+{% set title = "What is " + (data['trustees--trustee-name'] if data['trustees--trustee-name'] else "this trustee") + "’s passport or ID card’s country of issue?" %}
 {% set sectionName = "Trustees" %}
 {% set next = "passport-number" %}
 {% set buttonname = "Save and continue" %}

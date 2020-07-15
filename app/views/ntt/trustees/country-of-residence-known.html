@@ -1,4 +1,4 @@
-{% set title = "Do you know this trustee’s country of residence?" %}
+{% set title = "Do you know " + (data['trustees--trustee-name'] if data['trustees--trustee-name'] else "this trustee") + "’s country of residence?" %}
 {% set sectionName = "Trustees" %}
 {% set next = "country-of-residence-known--redirect" %}
 {% set buttonname = "Save and continue" %}

@@ -1,4 +1,4 @@
-{% set title = "Is this the lead trustee?" %}
+{% set title = "Is " + (data['trustees--trustee-name'] if data['trustees--trustee-name'] else "this") + " the lead trustee?" %}
 {% set sectionName = "Trustees" %}
 {% set next = "individual-or-business" %}
 {% set buttonname = "Save and continue" %}

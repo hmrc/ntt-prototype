@@ -1,3 +1,4 @@
+{% set title = "Is " + (data['trustees--trustee-name'] if data['trustees--trustee-name'] else "this trustee") + " an individual or a business?" %}
 {% set title = "Is this trustee an individual or a business?" %}
 {% set sectionName = "Trustees" %}
 {% set next = "trustee-name" %}
