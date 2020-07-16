@@ -17,31 +17,59 @@
             {% set trusteeName = (data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee" %}
 
             {# Convert month number into month name #}
-            {% set dataMonth = data['trustees--date-of-birth-month'] %}
-            {% if (dataMonth =='01') or (dataMonth =='1') %}
+            {% set dataDOBMonth = data['trustees--date-of-birth-month'] %}
+            {% if (dataDOBMonth =='01') or (dataDOBMonth =='1') %}
                 {% set dateOfBirthMonth = "January" %}
-            {% elif (dataMonth =='02') or (dataMonth =='2') %}
+            {% elif (dataDOBMonth =='02') or (dataDOBMonth =='2') %}
                 {% set dateOfBirthMonth = "February" %}
-            {% elif (dataMonth =='03') or (dataMonth =='3') %}
+            {% elif (dataDOBMonth =='03') or (dataDOBMonth =='3') %}
                 {% set dateOfBirthMonth = "March" %}
-            {% elif (dataMonth =='04') or (dataMonth =='4') %}
+            {% elif (dataDOBMonth =='04') or (dataDOBMonth =='4') %}
                 {% set dateOfBirthMonth = "April" %}
-            {% elif (dataMonth =='05') or (dataMonth =='5') %}
+            {% elif (dataDOBMonth =='05') or (dataDOBMonth =='5') %}
                 {% set dateOfBirthMonth = "May" %}
-            {% elif (dataMonth =='06') or (dataMonth =='6') %}
+            {% elif (dataDOBMonth =='06') or (dataDOBMonth =='6') %}
                 {% set dateOfBirthMonth = "June" %}
-            {% elif (dataMonth =='07') or (dataMonth =='7') %}
+            {% elif (dataDOBMonth =='07') or (dataDOBMonth =='7') %}
                 {% set dateOfBirthMonth = "July" %}
-            {% elif (dataMonth =='08') or (dataMonth =='8') %}
+            {% elif (dataDOBMonth =='08') or (dataDOBMonth =='8') %}
                 {% set dateOfBirthMonth = "August" %}
-            {% elif (dataMonth =='09') or (dataMonth =='9') %}
+            {% elif (dataDOBMonth =='09') or (dataDOBMonth =='9') %}
                 {% set dateOfBirthMonth = "September" %}
-            {% elif dataMonth =='10' %}
+            {% elif dataDOBMonth =='10' %}
                 {% set dateOfBirthMonth = "October" %}
-            {% elif dataMonth =='11'%}
+            {% elif dataDOBMonth =='11'%}
                 {% set dateOfBirthMonth = "November" %}
-            {% elif dataMonth =='12' %}
+            {% elif dataDOBMonth =='12' %}
                 {% set dateOfBirthMonth = "December" %}
+            {% endif %}
+
+            {# Convert month number into month name #}
+            {% set dataPassportMonth = data['trustees--passport-expiry-month'] %}
+            {% if (dataPassportMonth =='01') or (dataPassportMonth =='1') %}
+                {% set passportExpiryMonth = "January" %}
+            {% elif (dataPassportMonth =='02') or (dataPassportMonth =='2') %}
+                {% set passportExpiryMonth = "February" %}
+            {% elif (dataPassportMonth =='03') or (dataPassportMonth =='3') %}
+                {% set passportExpiryMonth = "March" %}
+            {% elif (dataPassportMonth =='04') or (dataPassportMonth =='4') %}
+                {% set passportExpiryMonth = "April" %}
+            {% elif (dataPassportMonth =='05') or (dataPassportMonth =='5') %}
+                {% set passportExpiryMonth = "May" %}
+            {% elif (dataPassportMonth =='06') or (dataPassportMonth =='6') %}
+                {% set passportExpiryMonth = "June" %}
+            {% elif (dataPassportMonth =='07') or (dataPassportMonth =='7') %}
+                {% set passportExpiryMonth = "July" %}
+            {% elif (dataPassportMonth =='08') or (dataPassportMonth =='8') %}
+                {% set passportExpiryMonth = "August" %}
+            {% elif (dataPassportMonth =='09') or (dataPassportMonth =='9') %}
+                {% set passportExpiryMonth = "September" %}
+            {% elif dataPassportMonth =='10' %}
+                {% set passportExpiryMonth = "October" %}
+            {% elif dataPassportMonth =='11'%}
+                {% set passportExpiryMonth = "November" %}
+            {% elif dataPassportMonth =='12' %}
+                {% set passportExpiryMonth = "December" %}
             {% endif %}
 
             {{ govukSummaryList({
@@ -128,6 +156,142 @@
                                     href: "date-of-birth",
                                     text: "Change",
                                     visuallyHiddenText: "What is " + trusteeName + "’s date of birth?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "Does " + trusteeName + " have a National Insurance number?"
+                        },
+                        value: {
+                            text: data["trustees--has-nino"] | capitalize
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "has-national-insurance-number",
+                                    text: "Change",
+                                    visuallyHiddenText: "Does " + trusteeName + " have a National Insurance number?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "What is " + trusteeName + "’s National Insurance number?"
+                        },
+                        value: {
+                            text: data["trustees--national-insurance-number"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "national-insurance-number",
+                                    text: "Change",
+                                    visuallyHiddenText: "What is " + trusteeName + "’s National Insurance number?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "What is " + trusteeName + "’s passport or ID card number?"
+                        },
+                        value: {
+                            text: data["trustees--passport-number"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "passport-number",
+                                    text: "Change",
+                                    visuallyHiddenText: "What is " + trusteeName + "’s passport or ID card number?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "When does " + trusteeName + "’s passport or ID card expire?"
+                        },
+                        value: {
+                            text: data["trustees--passport-expiry-day"] + " " + passportExpiryMonth + " " + data["trustees--passport-expiry-year"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "passport-expiry",
+                                    text: "Change",
+                                    visuallyHiddenText: "When does " + trusteeName + "’s passport or ID card expire?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "Where was " + trusteeName + "’s passport or ID card issued?"
+                        },
+                        value: {
+                            text: data["trustees--passport-country"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "passport-country",
+                                    text: "Change",
+                                    visuallyHiddenText: "Where was " + trusteeName + "’s passport or ID card issued?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "Is " + trusteeName + "’s address in the UK?"
+                        },
+                        value: {
+                            text: data["trustees--address-in-uk"] | capitalize
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "address-in-uk",
+                                    text: "Change",
+                                    visuallyHiddenText: "Is " + trusteeName + "’s address in the UK?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "What is " + trusteeName + "’s address?"
+                        },
+                        value: {
+                            text: data["trustees--address-uk-line-1"] + ", " + data["trustees--address-uk-line-2"] + ", " + data["trustees--address-uk-line-3"] + ", " + data["trustees--address-uk-line-4"] + ", " + data["trustees--postcode"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "address-uk",
+                                    text: "Change",
+                                    visuallyHiddenText: "What is " + trusteeName + "’s address?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "What is " + trusteeName + "’s address?"
+                        },
+                        value: {
+                            text: data["trustees--address-non-uk-line-1"] + ", " + data["trustees--address-non-uk-line-2"] + ", " + data["trustees--address-non-uk-line-3"] + ", " + data["trustees--address-non-uk-line-4"] + ", " + data["trustees--address-country"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "address-non-uk",
+                                    text: "Change",
+                                    visuallyHiddenText: "What is " + trusteeName + "’s address?"
                                 }
                             ]
                         }
@@ -230,6 +394,40 @@
                                     href: "country-of-residence",
                                     text: "Change",
                                     visuallyHiddenText: "Which country does " + trusteeName + " live in?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "What is " + trusteeName + "’s email address?"
+                        },
+                        value: {
+                            text: data["trustees--email"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "email",
+                                    text: "Change",
+                                    visuallyHiddenText: "What is " + trusteeName + "’s email address?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "What is " + trusteeName + "’s phone number?"
+                        },
+                        value: {
+                            text: data["trustees--telephone"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "telephone",
+                                    text: "Change",
+                                    visuallyHiddenText: "What is " + trusteeName + "’s phone number?"
                                 }
                             ]
                         }
