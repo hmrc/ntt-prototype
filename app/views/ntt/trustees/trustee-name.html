@@ -6,17 +6,32 @@
 {% extends "includes/_page.html" %}
 
 {% block form %}
+    <h1 class="govuk-fieldset__legend--xl  govuk-!-margin-top-0">{{ title }}</h1>
     <form action="{{ next }}" method="POST" >
-        {%- set dataItem = "trustees--trustee-name" -%}
+        {%- set dataItem = "trustees--trustee-first-name" -%}
         {{ govukInput({
             label: {
-                text: title,
-                classes: "govuk-label--xl",
-                isPageHeading: true
+                text: "First name"
             },
-            hint: {
-                text: "Enter 53 characters or fewer."
+            classes: "govuk-!-width-two-thirds",
+            id: dataItem,
+            name: dataItem
+        }) }}
+        {%- set dataItem = "trustees--trustee-middle-name" -%}
+        {{ govukInput({
+            label: {
+                text: "Middle name (optional)"
             },
+            classes: "govuk-!-width-two-thirds",
+            id: dataItem,
+            name: dataItem
+        }) }}
+        {%- set dataItem = "trustees--trustee-last-name" -%}
+        {{ govukInput({
+            label: {
+                text: "Last name"
+            },
+            classes: "govuk-!-width-two-thirds",
             id: dataItem,
             name: dataItem
         }) }}

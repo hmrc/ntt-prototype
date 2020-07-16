@@ -1,4 +1,4 @@
-{% set title = "What is " + (data['trustees--trustee-name'] if data['trustees--trustee-name'] else "this trustee") + "’s country of nationality?" %}
+{% set title = "What is " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s country of nationality?" %}
 {% set sectionName = "Trustees" %}
 {% set next = "country-of-nationality--redirect" %}
 {% set buttonname = "Save and continue" %}
@@ -13,9 +13,6 @@
                 text: title,
                 classes: "govuk-label--xl",
                 isPageHeading: true
-            },
-            hint: {
-                text: "Enter 53 characters or fewer."
             },
             id: dataItem,
             name: dataItem

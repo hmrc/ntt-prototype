@@ -1,4 +1,4 @@
-{% set title = "Does " + (data['trustees--trustee-name'] if data['trustees--trustee-name'] else "this trustee") + " have a national insurance number?" %}
+{% set title = "Does " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + " have a national insurance number?" %}
 {% set sectionName = "Trustees" %}
 {% set next = "has-national-insurance-number--redirect" %}
 {% set buttonname = "Save and continue" %}

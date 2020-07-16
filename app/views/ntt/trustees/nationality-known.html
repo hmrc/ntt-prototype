@@ -1,13 +1,13 @@
-{% set title = "Do you know this trustee’s is legally incapable?" %}
+{% set title = "Do you know " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s nationality?" %}
 {% set sectionName = "Trustees" %}
-{% set next = "legally-incapable-known--redirect" %}
+{% set next = "nationality-known--redirect" %}
 {% set buttonname = "Save and continue" %}
 
 {% extends "includes/_PAGE.html" %}
 
 {% block form %}
     <form action="{{ next }}" method="POST" >
-        {%- set dataItem = "trustees--legally-incapable-known" -%}
+        {%- set dataItem = "trustees--nationality-known" -%}
         {{ govukRadios({
             classes: "govuk-radios--inline",
             idPrefix: dataItem,

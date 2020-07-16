@@ -29,11 +29,11 @@ module.exports = function (router) {
     if (leadTrustee === 'yes') {
       res.redirect('/ntt/trustees/has-national-insurance-number')
     } else if (leadTrustee === 'no') {
-      res.redirect('/ntt/trustees/country-of-nationality-known')
+      res.redirect('/ntt/trustees/nationality-known')
     }
   })
 
-  router.post('/ntt/trustees/country-of-nationality-known--redirect', function (req, res) {
+  router.post('/ntt/trustees/nationality-known--redirect', function (req, res) {
 
     let nationalityKnown = req.session.data['trustees--nationality-known']
 
@@ -72,11 +72,11 @@ module.exports = function (router) {
     let leadTrustee = req.session.data['trustees--lead-trustee']
 
     if (nationalityUK === 'yes' && leadTrustee === 'no') {
-      res.redirect('/ntt/trustees/country-of-nationality')
+      res.redirect('/ntt/trustees/country-of-residence-known')
     } else if (nationalityUK === 'yes' && leadTrustee === 'yes') {
       res.redirect('/ntt/trustees/email')
     } else if (nationalityUK === 'no') {
-      res.redirect('/ntt/trustees/country-of-residence-known')
+      res.redirect('/ntt/trustees/country-of-nationality')
     }
   })
 
@@ -98,29 +98,18 @@ module.exports = function (router) {
     if (residencyKnown === 'yes') {
       res.redirect('/ntt/trustees/country-of-residence-uk')
     } else if (residencyKnown === 'no') {
-      res.redirect('/ntt/trustees/legally-incapable-known')
+      res.redirect('/ntt/trustees/check-answers')
     }
   })
 
-  router.post('/ntt/trustees/country-of-residence--redirect', function (req, res) {
+  router.post('/ntt/trustees/country-of-residence-uk--redirect', function (req, res) {
 
     let residencyUK = req.session.data['trustees--residence-uk']
 
     if (residencyUK === 'yes') {
-      res.redirect('/ntt/trustees/country-of-residence-uk')
-    } else if (residencyUK === 'no') {
-      res.redirect('/ntt/trustees/legally-incapable-known')
-    }
-  })
-
-  router.post('/ntt/trustees/legally-incapable-known--redirect', function (req, res) {
-
-    let legallyIncapableKnown = req.session.data['trustees--legally-incapable-known']
-
-    if (legallyIncapableKnown === 'yes') {
-      res.redirect('/ntt/trustees/legally-incapable')
-    } else if (legallyIncapableKnown === 'no') {
       res.redirect('/ntt/trustees/check-answers')
+    } else if (residencyUK === 'no') {
+      res.redirect('/ntt/trustees/country-of-residence')
     }
   })
 

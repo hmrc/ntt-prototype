@@ -1,4 +1,4 @@
-{% set title = "What is " + (data['trustees--trustee-name'] if data['trustees--trustee-name'] else "this trustee") + "’s date of birth?" %}
+{% set title = "What is " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s date of birth?" %}
 {% set sectionName = "Trustees" %}
 {% set next = "date-of-birth--redirect" %}
 {% set buttonname = "Save and continue" %}
@@ -19,7 +19,7 @@
                 }
             },
             hint: {
-                text: "For example, 31 3 2015."
+                text: "For example, 31 3 1980."
             }
         }) }}
         {{ govukButton({ text: buttonname }) }}

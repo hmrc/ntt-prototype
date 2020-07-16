@@ -1,4 +1,4 @@
-{% set title = "What is " + (data['trustees--trustee-name'] if data['trustees--trustee-name'] else "this trustee") + "’s address?" %}
+{% set title = "What is " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s address?" %}
 {% set sectionName = "Trustees" %}
 {% set next = "country-of-nationality-known" %}
 {% set buttonname = "Save and continue" %}
