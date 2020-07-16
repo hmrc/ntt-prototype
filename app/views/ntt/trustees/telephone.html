@@ -6,16 +6,17 @@
 {% extends "includes/_page.html" %}
 
 {% block form %}
+    <h1 class="govuk-fieldset__legend--xl  govuk-!-margin-top-0">{{ title }}</h1>
+    <p>We’ll use this to contact the lead trustee about this trust.</p>
     <form action="{{ next }}" method="POST" >
         {%- set dataItem = "trustees--telephone" -%}
         {{ govukInput({
             label: {
                 text: title,
-                classes: "govuk-label--xl",
-                isPageHeading: true
+                classes: "govuk-visually-hidden"
             },
             hint: {
-                text: "Enter 53 characters or fewer."
+                text: "For international numbers include the country code."
             },
             id: dataItem,
             name: dataItem
