@@ -4,7 +4,7 @@
             {% if task %}
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
-                        <a href="/ntt{{ "/" + task.directory | lower | replace(" ", "-") }}/{% if task.finished %}{{ task.listPage if task.listPage else "check-answers" }}{% else %}{{ task.startPage }}{% endif %}" aria-describedby="{{ task.id if task.id else task.directory | lower | replace(" ", "-") }}-status">
+                        <a href="{{ "/" + task.directory | lower | replace(" ", "-") }}/{% if task.finished %}{{ task.listPage if task.listPage else "check-answers" }}{% else %}{{ task.startPage }}{% endif %}" aria-describedby="{{ task.id if task.id else task.directory | lower | replace(" ", "-") }}-status">
                             {{ task.task }}
                         </a>
                     </span>
