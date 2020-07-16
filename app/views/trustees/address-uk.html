@@ -1,6 +1,6 @@
 {% set title = "What is " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s address?" %}
 {% set sectionName = "Trustees" %}
-{% set next = "country-of-nationality-known" %}
+{% set next = "country-of-nationality-uk" %}
 {% set buttonname = "Save and continue" %}
 
 {% extends "includes/_PAGE.html" %}
@@ -14,7 +14,7 @@
                 isPageHeading: true
             }
         }) %}
-            {%- set dataItem = "trustees--address-line-1" -%}
+            {%- set dataItem = "trustees--address-uk-line-1" -%}
             {{ govukInput({
                 label: {
                     text: 'Address line 1'
@@ -23,7 +23,7 @@
                 name: dataItem,
                 autocomplete: "address-line1"
             }) }}
-            {%- set dataItem = "trustees--address-line-2" -%}
+            {%- set dataItem = "trustees--address-uk-line-2" -%}
             {{ govukInput({
                 label: {
                     text: 'Address line 2'
@@ -32,7 +32,7 @@
                 name: dataItem,
                 autocomplete: "address-line2"
             }) }}
-            {%- set dataItem = "trustees--address-line-3" -%}
+            {%- set dataItem = "trustees--address-uk-line-3" -%}
             {{ govukInput({
                 label: {
                     text: 'Address line 3 (optional)'
@@ -42,7 +42,7 @@
                 name: dataItem,
                 autocomplete: "address-level2"
             }) }}
-            {%- set dataItem = "trustees--address-line-4" -%}
+            {%- set dataItem = "trustees--address-uk-line-4" -%}
             {{ govukInput({
                 label: {
                     text: 'Address line 4 (optional)'
