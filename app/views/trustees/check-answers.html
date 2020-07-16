@@ -12,15 +12,81 @@
         <div class="govuk-grid-column-two-thirds-from-desktop">
             <p class="govuk-caption-xl">{{ sectionName }}</p>
             <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+            {# Set trustee’s name #}
+            {% set trusteeName = (data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee" %}
+
+            {# Convert month number into month name #}
+            {% set dataMonth = data['trustees--date-of-birth-month'] %}
+            {% if (dataMonth =='01') or (dataMonth =='1') %}
+                {% set dateOfBirthMonth = "January" %}
+            {% elif (dataMonth =='02') or (dataMonth =='2') %}
+                {% set dateOfBirthMonth = "February" %}
+            {% elif (dataMonth =='03') or (dataMonth =='3') %}
+                {% set dateOfBirthMonth = "March" %}
+            {% elif (dataMonth =='04') or (dataMonth =='4') %}
+                {% set dateOfBirthMonth = "April" %}
+            {% elif (dataMonth =='05') or (dataMonth =='5') %}
+                {% set dateOfBirthMonth = "May" %}
+            {% elif (dataMonth =='06') or (dataMonth =='6') %}
+                {% set dateOfBirthMonth = "June" %}
+            {% elif (dataMonth =='07') or (dataMonth =='7') %}
+                {% set dateOfBirthMonth = "July" %}
+            {% elif (dataMonth =='08') or (dataMonth =='8') %}
+                {% set dateOfBirthMonth = "August" %}
+            {% elif (dataMonth =='09') or (dataMonth =='9') %}
+                {% set dateOfBirthMonth = "September" %}
+            {% elif dataMonth =='10' %}
+                {% set dateOfBirthMonth = "October" %}
+            {% elif dataMonth =='11'%}
+                {% set dateOfBirthMonth = "November" %}
+            {% elif dataMonth =='12' %}
+                {% set dateOfBirthMonth = "December" %}
+            {% endif %}
+
             {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
                 rows: [
                     {
                         key: {
+                            text: "Is this the lead trustee?"
+                        },
+                        value: {
+                            text: data["trustees--lead-trustee"] | capitalize
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "lead-trustee",
+                                    text: "Change",
+                                    visuallyHiddenText: "Is this the lead trustee?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "Is this trustee an individual or a business?"
+                        },
+                        value: {
+                            text: data["trustees--individual-or-business"] | capitalize
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "individual-or-business",
+                                    text: "Change",
+                                    visuallyHiddenText: "Is this trustee an individual or a business?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
                             text: "What is this trustee’s name?"
                         },
                         value: {
-                            text: data["trustees--trustee-name"]
+                            text: data['trustees--trustee-first-name'] + " " + data['trustees--trustee-middle-name'] + " " + data['trustees--trustee-last-name']
                         },
                         actions: {
                             items: [
@@ -28,6 +94,142 @@
                                     href: "trustee-name",
                                     text: "Change",
                                     visuallyHiddenText: "What is this trustee’s name?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "Do you know " + trusteeName + "’s date of birth?"
+                        },
+                        value: {
+                            text: data["trustees--date-of-birth-known"] | capitalize
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "date-of-birth-known",
+                                    text: "Change",
+                                    visuallyHiddenText: "Do you know " + trusteeName + "’s date of birth?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "What is " + trusteeName + "’s date of birth?"
+                        },
+                        value: {
+                            text: data["trustees--date-of-birth-day"] + " " + dateOfBirthMonth + " " + data["trustees--date-of-birth-year"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "date-of-birth",
+                                    text: "Change",
+                                    visuallyHiddenText: "What is " + trusteeName + "’s date of birth?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "Do you know " + trusteeName + "’s nationality?"
+                        },
+                        value: {
+                            text: data["trustees--nationality-known"] | capitalize
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "nationality-known",
+                                    text: "Change",
+                                    visuallyHiddenText: "Do you know " + trusteeName + "’s nationality?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "Is " + trusteeName + "’s country of nationality the UK?"
+                        },
+                        value: {
+                            text: data["trustees--nationality-uk"] | capitalize
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "country-of-nationality-uk",
+                                    text: "Change",
+                                    visuallyHiddenText: "Is " + trusteeName + "’s country of nationality the UK?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "What is " + trusteeName + "’s country of nationality?"
+                        },
+                        value: {
+                            text: data["trustees--nationality"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "country-of-nationality",
+                                    text: "Change",
+                                    visuallyHiddenText: "What is " + trusteeName + "’s country of nationality?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "Do you know which country " + trusteeName + " lives in?"
+                        },
+                        value: {
+                            text: data["trustees--residence-known"] | capitalize
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "country-of-residence-known",
+                                    text: "Change",
+                                    visuallyHiddenText: "Do you know which country " + trusteeName + " lives in?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "Does " + trusteeName + " live in the UK?"
+                        },
+                        value: {
+                            text: data["trustees--residence-uk"] | capitalize
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "country-of-residence-uk",
+                                    text: "Change",
+                                    visuallyHiddenText: "Does " + trusteeName + " live in the UK?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "Which country does " + trusteeName + " live in?"
+                        },
+                        value: {
+                            text: data["trustees--residence"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "country-of-residence",
+                                    text: "Change",
+                                    visuallyHiddenText: "Which country does " + trusteeName + " live in?"
                                 }
                             ]
                         }
