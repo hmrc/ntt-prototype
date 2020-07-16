@@ -1,6 +1,6 @@
 module.exports = function (router) {
 
-  router.post('/ntt/trust-details/trustees-uk-answer', function (req, res) {
+  router.post('/ntt/trust-details/trustees-uk--redirect', function (req, res) {
 
     let trustInUK = req.session.data['trust-details--trustees-all-uk']
 
@@ -11,7 +11,7 @@ module.exports = function (router) {
     }
   })
 
-  router.post('/ntt/trust-details/trustees-non-uk-answer', function (req, res) {
+  router.post('/ntt/trust-details/trustees-non-uk--redirect', function (req, res) {
 
     let trustOutsideUK = req.session.data['trust-details--trustees-all-non-uk']
 
