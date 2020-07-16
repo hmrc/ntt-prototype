@@ -1,6 +1,6 @@
-{% set title = "What is " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s passport or ID card’s country of issue?" %}
+{% set title = "Where was " + ((data['trustees--trustee-first-name'] + " " + data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s passport or ID card issued?" %}
 {% set sectionName = "Trustees" %}
-{% set next = "passport-number" %}
+{% set next = "address-in-uk" %}
 {% set buttonname = "Save and continue" %}
 
 {% extends "includes/_page.html" %}
@@ -13,9 +13,6 @@
                 text: title,
                 classes: "govuk-label--xl",
                 isPageHeading: true
-            },
-            hint: {
-                text: "Enter 53 characters or fewer."
             },
             id: dataItem,
             name: dataItem

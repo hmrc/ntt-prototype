@@ -1,6 +1,6 @@
-{% set title = "What is " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s passport or ID card’s expiry date?" %}
+{% set title = "When does " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s passport or ID card’s expire?" %}
 {% set sectionName = "Trustees" %}
-{% set next = "address-in-uk" %}
+{% set next = "passport-country" %}
 {% set buttonname = "Save and continue" %}
 
 {% extends "includes/_PAGE.html" %}

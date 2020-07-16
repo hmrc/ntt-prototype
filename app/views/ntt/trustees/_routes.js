@@ -51,7 +51,7 @@ module.exports = function (router) {
     if (hasNINO === 'yes') {
       res.redirect('/ntt/trustees/national-insurance-number')
     } else if (hasNINO === 'no') {
-      res.redirect('/ntt/trustees/passport-country')
+      res.redirect('/ntt/trustees/passport-number')
     }
   })
 
