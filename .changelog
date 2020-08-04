@@ -12,6 +12,11 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+----------
+
+
+## [0.1.0] - 2020-07-17
+
 ### Adds
 - Installs prototype kit v9.8.0
 - Adds changelog
@@ -25,5 +30,3 @@ All notable changes to this project will be documented in this file. The format 
 - Installs HMRC frontend v1.15.1
 - Adds trustees section for individual trustees (not business), both lead and non-lead
 - Builds task list macro
-
-----------
