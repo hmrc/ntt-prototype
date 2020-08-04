@@ -1,0 +1,26 @@
+{% set title = "What is " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s telephone number?" %}
+{% set sectionName = "Trustees" %}
+{% set next = "check-answers" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_page.html" %}
+
+{% block form %}
+    <h1 class="govuk-fieldset__legend--xl  govuk-!-margin-top-0">{{ title }}</h1>
+    <p>We’ll use this to contact the lead trustee about this trust.</p>
+    <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trustees--telephone" -%}
+        {{ govukInput({
+            label: {
+                text: title,
+                classes: "govuk-visually-hidden"
+            },
+            hint: {
+                text: "For international numbers include the country code."
+            },
+            id: dataItem,
+            name: dataItem
+        }) }}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}

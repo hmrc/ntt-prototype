@@ -1,22 +1,22 @@
-{% set title = "Are any of the settlors based in the UK?" %}
+{% set title = "Are all of the trustees based outside of the UK?" %}
 {% set sectionName = "Trust details" %}
-{% set next = "residency-confirmation" %}
+{% set next = "trustees-non-uk--redirect" %}
 {% set buttonname = "Save and continue" %}
 
 {% extends "includes/_PAGE.html" %}
 
 {% block form %}
-    <h1 class="govuk-fieldset__legend--xl govuk-!-margin-top-0">{{ title }}</h1>
-    <p>The settlor is the person who puts assets into a trust.</p>
     <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trust-details--trustees-all-non-uk" -%}
         {{ govukRadios({
             classes: "govuk-radios--inline",
-            idPrefix: "settlors-uk",
-            name: "settlors-uk",
+            idPrefix: dataItem,
+            name: dataItem,
             fieldset: {
                 legend: {
                     text: title,
-                    classes: "govuk-visually-hidden"
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--xl"
                 }
             },
             items: [
@@ -30,6 +30,6 @@
                 }
             ]
         }) }}
-        <input class="govuk-button" type="submit" value="{{ buttonname }}" name="{{ button }}">
+        {{ govukButton({ text: buttonname }) }}
     </form>
 {% endblock %}

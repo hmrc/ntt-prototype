@@ -1,0 +1,22 @@
+{% set title = "Where was " + ((data['trustees--trustee-first-name'] + " " + data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s passport or national identity card issued?" %}
+{% set sectionName = "Trustees" %}
+{% set next = "address-in-uk" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_page.html" %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trustees--passport-country" -%}
+        {{ govukInput({
+            label: {
+                text: title,
+                classes: "govuk-label--xl",
+                isPageHeading: true
+            },
+            id: dataItem,
+            name: dataItem
+        }) }}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}

@@ -13,19 +13,17 @@ All notable changes to this project will be documented in this file. The format 
 ## [Unreleased]
 
 ### Adds
-- Gets routes working in trust details section
-- New page include for question pages
-- Uses macro for links on listings page
+- Installs prototype kit v9.8.0
 - Adds changelog
 - Adds editorconfig file for code consistency
 - Outputs data stored in forms to the terminal
 - Adds VSCode specific config for html/nunjucks files
+- New page include for question pages
 - Sets up main home/index page
 - Adds page index/listings page
 - Adds trust details section, as it was in the [old prototype](https://github.com/hmrc/fivemld-prototype)
-- Installs prototype kit v9.8.0
-
-### Fixes
-- Uses consistent heading size for trust details CYA
+- Installs HMRC frontend v1.15.1
+- Adds trustees section for individual trustees (not business), both lead and non-lead
+- Builds task list macro
 
 ----------

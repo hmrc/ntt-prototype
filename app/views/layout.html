@@ -29,23 +29,26 @@
 {% from "govuk/components/textarea/macro.njk"         import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
 
+{# Custom macros #}
+{% from "macros/task-list/macro.njk"                  import taskList %}
+
 {% block head %}
-  {% include "includes/head.html" %}
+    {% include "includes/head.html" %}
 {% endblock %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+    GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
-  {% include "includes/cookie-banner.html" %}
-  {# Set serviceName in config.js. #}
-  {{ govukHeader({
-    homepageUrl: "/",
-    serviceName: serviceName,
-    serviceUrl: "/",
-    containerClasses: "govuk-width-container"
-  }) }}
+    {% include "includes/cookie-banner.html" %}
+    {# Set serviceName in config.js. #}
+    {{ govukHeader({
+        homepageUrl: "/",
+        serviceName: serviceName,
+        serviceUrl: "/",
+        containerClasses: "govuk-width-container"
+    }) }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -58,7 +61,9 @@
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            {% if not hideback %}<a href="javascript:history.back()" class="govuk-back-link">Back</a>{% endif %}
+            {% if not hideback -%}
+                <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+            {%- endif %}
         </div>
     </div>
 {% endblock %}
@@ -66,28 +71,28 @@
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% if useAutoStoreData %}
-  {% block footer %}
-    {{ govukFooter({
-      meta: {
-        items: [
-          {
-            href: "https://govuk-prototype-kit.herokuapp.com/",
-            text: "GOV.UK Prototype Kit " + releaseVersion
-          },
-          {
-            href: "/prototype-admin/clear-data",
-            text: "Clear data"
-          }
-        ]
-      }
-    }) }}
-  {% endblock %}
+    {% block footer %}
+        {{ govukFooter({
+            meta: {
+                items: [
+                    {
+                        href: "https://govuk-prototype-kit.herokuapp.com/",
+                        text: "GOV.UK Prototype Kit " + releaseVersion
+                    },
+                    {
+                        href: "/prototype-admin/clear-data",
+                        text: "Clear data"
+                    }
+                ]
+            }
+        }) }}
+    {% endblock %}
 {% endif %}
 
 {% block bodyEnd %}
-  {% block scripts %}
-    {% include "includes/scripts.html" %}
-    {% block pageScripts %}{% endblock %}
-  {% endblock %}
-  <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
+    {% block scripts %}
+        {% include "includes/scripts.html" %}
+        {% block pageScripts %}{% endblock %}
+    {% endblock %}
+    <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
 {% endblock %}

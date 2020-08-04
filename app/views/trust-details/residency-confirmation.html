@@ -1,9 +1,9 @@
-{%- if data["trustees-uk"] and data["trustees-uk"] == "yes" %}
+{%- if data["trust-details--trustees-all-uk"] and data["trust-details--trustees-all-uk"] == "yes" %}
     {% set UKTrust = true %}
 {%- elif
-    (data["trustees-non-uk"] and data["trustees-non-uk"] == "no")
+    (data["trust-details--trustees-all-uk"] and data["trust-details--trustees-all-uk"] == "no")
     and
-    (data["settlors-uk"] and data["settlors-uk"] == "yes")
+    (data["trust-details--settlors-any-uk"] and data["trust-details--settlors-any-uk"] == "yes")
 %}
     {% set UKTrust = true %}
 {% endif -%}
@@ -21,7 +21,10 @@
             <p class="govuk-caption-xl">{{ sectionName }}</p>
             <h1 class="govuk-heading-xl">{{ title }}</h1>
             <p>Based on your answers, the trust is {{ 'not' if not UKTrust }} resident in the UK.</p>
-            <p><a class="govuk-button" href="{{ next }}">{{ buttonname }}</a></p>
+            {{ govukButton({
+                text: buttonname,
+                href: next
+            }) }}
         </div>
     </div>
 {% endblock %}

@@ -2,6 +2,7 @@
 {% set sectionName = "Trust details" %}
 {% set next = "../task-list" %}
 {% set buttonname = "Confirm and continue" %}
+{% set hideback = true %}
 
 {% extends "includes/_PAGE.html" %}
 
@@ -9,43 +10,45 @@
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds-from-desktop">
+            <p class="govuk-caption-xl">{{ sectionName }}</p>
             <h1 class="govuk-heading-xl">{{ title }}</h1>
 
             {# Check if UK or non-UK trust #}
-            {% if data["trustees-uk"] and data["trustees-uk"] == "yes" %}
+            {%- if data["trust-details--trustees-all-uk"] and data["trust-details--trustees-all-uk"] == "yes" %}
                 {% set UKTrust = true %}
-            {% elif
-                (data["trustees-non-uk"] and data["trustees-non-uk"] == "no")
+            {%- elif
+                (data["trust-details--trustees-all-non-uk"] and data["trust-details--trustees-all-non-uk"] == "no")
                 and
-                (data["settlors-uk"] and data["settlors-uk"] == "yes")
+                (data["trust-details--settlors-any-uk"] and data["trust-details--settlors-any-uk"] == "yes")
             %}
                 {% set UKTrust = true %}
-            {% endif %}
+            {% endif -%}
 
             {# Convert month number into month name #}
-            {% if (data['trust-created-month'] =='01') or (data['trust-created-month'] =='1') %}
+            {% set dataMonth = data['trust-details--created-month'] %}
+            {% if (dataMonth =='01') or (dataMonth =='1') %}
                 {% set monthCreated = "January" %}
-            {% elif (data['trust-created-month'] =='02') or (data['trust-created-month'] =='2') %}
+            {% elif (dataMonth =='02') or (dataMonth =='2') %}
                 {% set monthCreated = "February" %}
-            {% elif (data['trust-created-month'] =='03') or (data['trust-created-month'] =='3') %}
+            {% elif (dataMonth =='03') or (dataMonth =='3') %}
                 {% set monthCreated = "March" %}
-            {% elif (data['trust-created-month'] =='04') or (data['trust-created-month'] =='4') %}
+            {% elif (dataMonth =='04') or (dataMonth =='4') %}
                 {% set monthCreated = "April" %}
-            {% elif (data['trust-created-month'] =='05') or (data['trust-created-month'] =='5') %}
+            {% elif (dataMonth =='05') or (dataMonth =='5') %}
                 {% set monthCreated = "May" %}
-            {% elif (data['trust-created-month'] =='06') or (data['trust-created-month'] =='6') %}
+            {% elif (dataMonth =='06') or (dataMonth =='6') %}
                 {% set monthCreated = "June" %}
-            {% elif (data['trust-created-month'] =='07') or (data['trust-created-month'] =='7') %}
+            {% elif (dataMonth =='07') or (dataMonth =='7') %}
                 {% set monthCreated = "July" %}
-            {% elif (data['trust-created-month'] =='08') or (data['trust-created-month'] =='8') %}
+            {% elif (dataMonth =='08') or (dataMonth =='8') %}
                 {% set monthCreated = "August" %}
-            {% elif (data['trust-created-month'] =='09') or (data['trust-created-month'] =='9') %}
+            {% elif (dataMonth =='09') or (dataMonth =='9') %}
                 {% set monthCreated = "September" %}
-            {% elif data['trust-created-month'] =='10' %}
+            {% elif dataMonth =='10' %}
                 {% set monthCreated = "October" %}
-            {% elif data['trust-created-month'] =='11'%}
+            {% elif dataMonth =='11'%}
                 {% set monthCreated = "November" %}
-            {% elif data['trust-created-month'] =='12' %}
+            {% elif dataMonth =='12' %}
                 {% set monthCreated = "December" %}
             {% endif %}
 
@@ -57,7 +60,7 @@
                             text: "What is the name of the trust?"
                         },
                         value: {
-                            text: data["trust-name"]
+                            text: data["trust-details--name"]
                         },
                         actions: {
                             items: [
@@ -74,7 +77,7 @@
                             text: "When was the trust created?"
                         },
                         value: {
-                            text: data["trust-created-day"] + " " + monthCreated + " " + data["trust-created-year"]
+                            text: data["trust-details--created-day"] + " " + monthCreated + " " + data["trust-details--created-year"]
                         },
                         actions: {
                             items: [
@@ -108,7 +111,7 @@
                             text: "Is the trust an express trust?"
                         },
                         value: {
-                            text: data["express-trust"] | capitalize
+                            text: data["trust-details--express"] | capitalize
                         },
                         actions: {
                             items: [
@@ -123,7 +126,11 @@
                 ]
             }) }}
             <form action="{{ next }}" method="POST" >
-                <input class="govuk-button" type="submit" value="{{buttonname}}" name="trust-details-confimed">
+                {{ govukButton({
+                    text: buttonname,
+                    name: "trust-details-confimed",
+                    value: "yes"
+                }) }}
             </form>
         </div>
     </div>
