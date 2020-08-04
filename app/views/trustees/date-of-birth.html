@@ -1,0 +1,27 @@
+{% set title = "What is " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s date of birth?" %}
+{% set sectionName = "Trustees" %}
+{% set next = "date-of-birth--redirect" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trustees--date-of-birth" -%}
+        {{ govukDateInput({
+            id: dataItem,
+            namePrefix: dataItem,
+            fieldset: {
+                legend: {
+                    text: title,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--xl"
+                }
+            },
+            hint: {
+                text: "For example, 31 3 1980."
+            }
+        }) }}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}

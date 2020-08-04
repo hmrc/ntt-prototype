@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% set pageTitle = "Non taxable trusts" %}
+
+{% block pageTitle %}
+  {{ pageTitle }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">
+                {{ pageTitle }}
+            </h1>
+
+            <p>This prototype is to test and provide reference for {{ pageTitle | lower }}.</p>
+            {{ govukButton({
+                text: "Start now",
+                href: "./task-list",
+                isStartButton: true
+            }) }}
+
+            <h2 class="govuk-heading-m">Page index</h2>
+            <p>Links to every page in the {{ pageTitle | lower }} prototype.</p>
+            {{ govukButton({
+                text: "View page index",
+                href: "listing"
+            }) }}
+
+            <h2 class="govuk-heading-m">Prototype kit and design system</h2>
+            <p>This prototype is built using the <a href="https://github.com/alphagov/govuk-prototype-kit">GOV.UK prototype kit</a>, version {{releaseVersion}}. For more information see <a href="/docs/tutorials-and-examples">example pages and documentation</a>. For patterns, components, etc. see the <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>.</p>
+
+        </div>
+    </div>
+{% endblock %}

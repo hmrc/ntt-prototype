@@ -1,0 +1,35 @@
+{% set title = "Does " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + " live in the UK?" %}
+{% set sectionName = "Trustees" %}
+{% set next = "country-of-residence-uk--redirect" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trustees--residence-uk" -%}
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: dataItem,
+            name: dataItem,
+            fieldset: {
+                legend: {
+                    text: title,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--xl"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}

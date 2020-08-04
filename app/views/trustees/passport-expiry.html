@@ -1,0 +1,27 @@
+{% set title = "When does " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s passport or national identity card expire?" %}
+{% set sectionName = "Trustees" %}
+{% set next = "passport-country" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trustees--passport-expiry" -%}
+        {{ govukDateInput({
+            id: dataItem,
+            namePrefix: dataItem,
+            fieldset: {
+                legend: {
+                    text: title,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--xl"
+                }
+            },
+            hint: {
+                text: "For example, 31 3 2015."
+            }
+        }) }}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}

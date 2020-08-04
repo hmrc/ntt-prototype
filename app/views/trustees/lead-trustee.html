@@ -1,0 +1,36 @@
+{% set title = "Is this the lead trustee?" %}
+{% set sectionName = "Trustees" %}
+{% set next = "individual-or-business" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block form %}
+    <h1 class="govuk-fieldset__legend--xl  govuk-!-margin-top-0">{{ title }}</h1>
+    <p>The lead trustee is the main point of contact for the trust. Do not enter agent details unless they are legally the lead trustee or a trustee.</p>
+    <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trustees--lead-trustee" -%}
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: dataItem,
+            name: dataItem,
+            fieldset: {
+                legend: {
+                    text: title,
+                    classes: "govuk-visually-hidden"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}

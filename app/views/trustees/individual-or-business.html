@@ -1,0 +1,35 @@
+{% set title = "Is this trustee an individual or a business?" %}
+{% set sectionName = "Trustees" %}
+{% set next = "trustee-name" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trustees--individual-or-business" -%}
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: dataItem,
+            name: dataItem,
+            fieldset: {
+                legend: {
+                    text: title,
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--xl"
+                }
+            },
+            items: [
+                {
+                    value: "individual",
+                    text: "Individual"
+                },
+                {
+                    value: "business",
+                    text: "Business"
+                }
+            ]
+        }) }}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% set title = "What is " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s passport or national identity card number?" %}
+{% set sectionName = "Trustees" %}
+{% set next = "passport-expiry" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_page.html" %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trustees--passport-number" -%}
+        {{ govukInput({
+            label: {
+                text: title,
+                classes: "govuk-label--xl",
+                isPageHeading: true
+            },
+            id: dataItem,
+            name: dataItem
+        }) }}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}

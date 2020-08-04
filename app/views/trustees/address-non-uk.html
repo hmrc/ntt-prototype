@@ -1,0 +1,67 @@
+{% set title = "What is " + ((data['trustees--trustee-first-name'] + " " +data['trustees--trustee-last-name']) if data['trustees--trustee-first-name'] else "this trustee") + "’s address?" %}
+{% set sectionName = "Trustees" %}
+{% set next = "country-of-nationality-uk" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block form %}
+    <form action="{{ next }}" method="POST" >
+        {% call govukFieldset({
+            legend: {
+                text: title,
+                classes: "govuk-fieldset__legend--xl",
+                isPageHeading: true
+            }
+        }) %}
+            {%- set dataItem = "trustees--address-non-uk-line-1" -%}
+            {{ govukInput({
+                label: {
+                    text: 'Address line 1'
+                },
+                id: dataItem,
+                name: dataItem,
+                autocomplete: "address-line1"
+            }) }}
+            {%- set dataItem = "trustees--address-non-uk-line-2" -%}
+            {{ govukInput({
+                label: {
+                    text: 'Address line 2'
+                },
+                id: dataItem,
+                name: dataItem,
+                autocomplete: "address-line2"
+            }) }}
+            {%- set dataItem = "trustees--address-non-uk-line-3" -%}
+            {{ govukInput({
+                label: {
+                    text: 'Address line 3 (optional)'
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: dataItem,
+                name: dataItem,
+                autocomplete: "address-level2"
+            }) }}
+            {%- set dataItem = "trustees--address-non-uk-line-4" -%}
+            {{ govukInput({
+                label: {
+                    text: 'Address line 4 (optional)'
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: dataItem,
+                name: dataItem
+            }) }}
+            {%- set dataItem = "trustees--address-country" -%}
+            {{ govukInput({
+                label: {
+                    text: "Country"
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: dataItem,
+                name: dataItem,
+                autocomplete: "country"
+            }) }}
+        {% endcall %}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}

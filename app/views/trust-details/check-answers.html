@@ -1,0 +1,138 @@
+{% set title = "Check your answers" %}
+{% set sectionName = "Trust details" %}
+{% set next = "../task-list" %}
+{% set buttonname = "Confirm and continue" %}
+{% set hideback = true %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+            <p class="govuk-caption-xl">{{ sectionName }}</p>
+            <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+            {# Check if UK or non-UK trust #}
+            {%- if data["trust-details--trustees-all-uk"] and data["trust-details--trustees-all-uk"] == "yes" %}
+                {% set UKTrust = true %}
+            {%- elif
+                (data["trust-details--trustees-all-non-uk"] and data["trust-details--trustees-all-non-uk"] == "no")
+                and
+                (data["trust-details--settlors-any-uk"] and data["trust-details--settlors-any-uk"] == "yes")
+            %}
+                {% set UKTrust = true %}
+            {% endif -%}
+
+            {# Convert month number into month name #}
+            {% set dataMonth = data['trust-details--created-month'] %}
+            {% if (dataMonth =='01') or (dataMonth =='1') %}
+                {% set monthCreated = "January" %}
+            {% elif (dataMonth =='02') or (dataMonth =='2') %}
+                {% set monthCreated = "February" %}
+            {% elif (dataMonth =='03') or (dataMonth =='3') %}
+                {% set monthCreated = "March" %}
+            {% elif (dataMonth =='04') or (dataMonth =='4') %}
+                {% set monthCreated = "April" %}
+            {% elif (dataMonth =='05') or (dataMonth =='5') %}
+                {% set monthCreated = "May" %}
+            {% elif (dataMonth =='06') or (dataMonth =='6') %}
+                {% set monthCreated = "June" %}
+            {% elif (dataMonth =='07') or (dataMonth =='7') %}
+                {% set monthCreated = "July" %}
+            {% elif (dataMonth =='08') or (dataMonth =='8') %}
+                {% set monthCreated = "August" %}
+            {% elif (dataMonth =='09') or (dataMonth =='9') %}
+                {% set monthCreated = "September" %}
+            {% elif dataMonth =='10' %}
+                {% set monthCreated = "October" %}
+            {% elif dataMonth =='11'%}
+                {% set monthCreated = "November" %}
+            {% elif dataMonth =='12' %}
+                {% set monthCreated = "December" %}
+            {% endif %}
+
+            {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: [
+                    {
+                        key: {
+                            text: "What is the name of the trust?"
+                        },
+                        value: {
+                            text: data["trust-details--name"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "trust-name",
+                                    text: "Change",
+                                    visuallyHiddenText: "What is the name of the trust?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "When was the trust created?"
+                        },
+                        value: {
+                            text: data["trust-details--created-day"] + " " + monthCreated + " " + data["trust-details--created-year"]
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "date-trust-created",
+                                    text: "Change",
+                                    visuallyHiddenText: "When was the trust created?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            html: "Is the trust resident in the UK? <div style=\"font-weight: normal;\">This is based on your answers</div>"
+                        },
+                        value: {
+                            text: 'Yes' if UKTrust else 'No'
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "all-trustees-in-uk",
+                                    text: "Change",
+                                    visuallyHiddenText: "Is the trust resident in the UK?"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        key: {
+                            text: "Is the trust an express trust?"
+                        },
+                        value: {
+                            text: data["trust-details--express"] | capitalize
+                        },
+                        actions: {
+                            items: [
+                                {
+                                    href: "express-trust",
+                                    text: "Change",
+                                    visuallyHiddenText: "Is the trust an express trust?"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }) }}
+            <form action="{{ next }}" method="POST" >
+                {{ govukButton({
+                    text: buttonname,
+                    name: "trust-details-confimed",
+                    value: "yes"
+                }) }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

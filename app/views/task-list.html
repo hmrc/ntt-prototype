@@ -1,0 +1,33 @@
+{% set title = "Task list" %}
+{% set hideback = true %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+            <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+            {{ taskList({
+                classes: 'govuk-!-padding-left-0',
+                tasks: [
+                    {
+                        task: "Trust details",
+                        directory: "trust-details",
+                        startPage: "trust-name",
+                        started: data["trust-name"],
+                        finished: data["trust-details-confimed"]
+                    },
+                    {
+                        task: "Trustees",
+                        directory: "trustees",
+                        startPage: "lead-trustee",
+                        started: data["trustees--lead-trustee"],
+                        finished: data["trustees-confirmed"],
+                        listPage: "trustees"
+                    }
+                ]
+            }) }}
+        </div>
+    </div>
+{% endblock %}

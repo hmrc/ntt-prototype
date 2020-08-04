@@ -1,0 +1,36 @@
+{% set title = "Is the trust an express trust?" %}
+{% set sectionName = "Trust details" %}
+{% set next = "check-answers" %}
+{% set buttonname = "Save and continue" %}
+
+{% extends "includes/_PAGE.html" %}
+
+{% block form %}
+    <h1 class="govuk-fieldset__legend--xl govuk-!-margin-top-0">{{ title }}</h1>
+    <p>An express trust is a trust that has been deliberately created by the settlor. For example, if the trust was set up by a court, it is not an express trust.</p>
+    <form action="{{ next }}" method="POST" >
+        {%- set dataItem = "trust-details--express" -%}
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: dataItem,
+            name: dataItem,
+            fieldset: {
+                legend: {
+                    text: title,
+                    classes: "govuk-visually-hidden"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+        {{ govukButton({ text: buttonname }) }}
+    </form>
+{% endblock %}
